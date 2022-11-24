@@ -8,13 +8,12 @@ jobs:
   test_schedule:
     runs-on: ubuntu-latest
     steps:
-      - name: sample jobs
-        run: echo "every 10 mins"
       - name: Clone the code
         uses: actions/checkout@v2
       - name: check the current version
         run: |
-          current_version=$(curl -sN http://www.live555.com/liveMedia/public/changelog.txt | head -n 1 | tr "." "\0" | tr ":" "\0")
+          current_version=$(curl -sN http://www.live555.com/liveMedia/public/changelog.txt | head -n 1 | tr ":" "\0")
           echo "current_version: $current_version"
-          previous_version=$(cat changelog.txt | head -n 1 | tr "." "\0" | tr ":" "\0")
+          wget http://www.live555.com/liveMedia/public/live.${current_version}.tar.gz
+          previous_version=$(cat changelog.txt | head -n 1 | tr ":" "\0")
           echo "previous_version: $previous_version"
