@@ -43,7 +43,7 @@ jobs:
             rm -rf * 
             wget http://www.live555.com/liveMedia/public/live.${current_version}.tar.gz
             tar -xzf live.${current_version}.tar.gz
-            cp live/* .
+            cp -r live/* .
             rm -r live
             git status
             git add .
