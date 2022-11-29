@@ -40,6 +40,7 @@ jobs:
           if [[ ccv -gt cpv ]]; then
             echo -e "current version is greater"
             wget http://www.live555.com/liveMedia/public/live.${current_version}.tar.gz
+            ls -lhA
             rm -rf * 
             tar -xzf live.${current_version}.tar.gz
             git status
