@@ -1,10 +1,8 @@
 name: mirror
 
 on:
-  push:
-  
   schedule:
-    - cron: '10 * * * *'
+    - cron: '5 5 * * *'
     
 jobs:
   test_schedule:
@@ -12,7 +10,7 @@ jobs:
     steps:
       - name: clone/checkout the code
         uses: actions/checkout@v2
-      - name: check the current version
+      - name: perform code mirror
         run: |
           current_version=$(curl -sN http://www.live555.com/liveMedia/public/changelog.txt | head -n 1 | tr ":" "\0")
           echo "current_version: $current_version"
@@ -49,7 +47,7 @@ jobs:
             git config user.email "46962558+maiananthan@users.noreply.github.com"
             git config user.name "Maiananthan"
             git add .
-            git commit -m "code change"
+            git commit -m "version - $current_version"
             git push
           else
             echo -e "current version is same"
