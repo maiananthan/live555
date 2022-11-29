@@ -1,6 +1,8 @@
 name: mirror
 
 on:
+  push:
+  
   schedule:
     - cron: '10 * * * *'
     
